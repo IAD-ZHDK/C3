@@ -7,9 +7,11 @@ html
     = csrf_meta_tags
   body
     ul
+      li = link_to 'Overview', overview_path
+      - if staff?
+        li = link_to 'New Proposal', new_proposal_path
       - if logged_in?
         li = link_to 'Logout', logout_path, method: :post
       - else
         li = link_to 'Login', login_path
-      li = link_to 'Overview', overview_path
     = yield
