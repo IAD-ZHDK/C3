@@ -3,3 +3,6 @@ h1 Overview
 - @proposals.each do |proposal|
   .proposal
     .title = proposal.title
+    - if votable?(proposal)
+      .vote = link_to 'Vote', vote_proposal_path(proposal), method: :post
+    .score = proposal.votes.count

@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   post 'authenticate', to: 'authentication#authenticate'
   post 'logout', to: 'authentication#logout'
 
-  resources :proposals, only: [:new, :create]
+  resources :proposals, only: [:new, :create] do
+    member do
+      post 'vote'
+    end
+  end
 end

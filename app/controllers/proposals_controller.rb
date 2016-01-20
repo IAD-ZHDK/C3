@@ -12,6 +12,12 @@ class ProposalsController < ApplicationController
     end
   end
 
+  def vote
+    @proposal = Proposal.find(params[:id])
+    @proposal.votes.find_or_create_by(user_id: current_user.id)
+    redirect_to overview_path
+  end
+
   protected
 
   def permitted_params

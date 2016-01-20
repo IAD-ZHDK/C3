@@ -1,4 +1,4 @@
-module ApplicationHelper
+module AuthenticationHelper
   def logged_in?
     current_user.present?
   end
