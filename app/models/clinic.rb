@@ -10,6 +10,7 @@ class Clinic
 
   belongs_to :proposer, class_name: 'User', inverse_of: :proposed_clinics
   field :proposed_at, type: Time
+  field :required_votes, type: Integer, default: 10
 
   field :appointment, type: Time
   field :scheduled_at, type: Time
@@ -20,6 +21,7 @@ class Clinic
   validates_presence_of :title, :description
   validates_presence_of :requested_at, if: :requester
   validates_presence_of :proposed_at, if: :proposer
+  validates_presence_of :required_votes, if: :proposer
   validates_presence_of :scheduled_at, if: :appointment
 
   scope :requested, -> { where(

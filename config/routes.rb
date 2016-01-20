@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :clinics, only: [:show] do
     member do
       post 'vote'
+      post 'propose'
       post 'attend'
     end
   end

@@ -7,6 +7,11 @@
         = link_to 'Attend', attend_clinic_path(clinic), method: :post, class: 'action'
       .score = "#{clinic.attendances.count} Attendees"
     - if clinic.votable?
+      - if clinic.requested?
+        = link_to 'Propose', propose_clinic_path(clinic), method: :post, class: 'action'
       - if logged_in? && current_user.votable?(clinic)
         = link_to 'Vote', vote_clinic_path(clinic), method: :post, class: 'action'
-      .score = "#{clinic.votes.count} Votes"
+      - if clinic.proposed?
+        .score = "#{clinic.votes.count}/#{clinic.required_votes}"
+      - else
+        .score = clinic.votes.count
