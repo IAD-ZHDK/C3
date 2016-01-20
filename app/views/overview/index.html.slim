@@ -1,10 +1,23 @@
-h1 Overview
+h2 Proposed Clinics
 
-- @proposals.each do |proposal|
-  .proposal
-    .left
-      .title = proposal.title
-    .right
-      - if logged_in? && votable?(proposal)
-        = link_to 'Vote', vote_proposal_path(proposal), method: :post, class: 'vote'
-      .score = proposal.votes.count
+.list
+  - @proposals.each do |proposal|
+    .item
+      .left
+        .title = proposal.title
+      .right
+        - if logged_in? && attendable?(proposal)
+          = link_to 'Attend', attend_proposal_path(proposal), method: :post, class: 'action'
+        .score = proposal.attendances.count
+
+h2 Requested Clinics
+
+.list
+  - @requests.each do |request|
+    .item
+      .left
+        .title = request.title
+      .right
+        - if logged_in? && votable?(request)
+          = link_to 'Vote', vote_request_path(request), method: :post, class: 'action'
+        .score = request.votes.count

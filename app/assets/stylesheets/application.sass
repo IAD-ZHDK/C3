@@ -27,7 +27,7 @@ body
     margin-right: 10px
     text-decoration: none
 
-.proposal
+.item
   background-color: #eee
   padding: 20px
   margin: 5px 0
@@ -43,9 +43,9 @@ body
   .title
     display: inline-block
     font-size: 18px
-  .vote
+  .action
     display: inline-block
-    background-color: black
+    background-color: $color
     color: white
     text-decoration: none
     font-size: 14px
@@ -53,7 +53,7 @@ body
     border-radius: 3px
     margin: 0 10px
     &:hover
-      background-color: grey
+      background-color: darken($color, 10%)
   .score
     display: inline-block
     font-weight: bold

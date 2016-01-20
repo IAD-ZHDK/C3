@@ -1,5 +1,6 @@
 class OverviewController < ApplicationController
   def index
-    @proposals = Proposal.all
+    @requests = Clinic.requested
+    @proposals = Clinic.proposed
   end
 end

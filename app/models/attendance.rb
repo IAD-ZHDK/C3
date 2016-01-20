@@ -1,4 +1,4 @@
-class Vote
+class Attendance
   include Mongoid::Document
   include Mongoid::Timestamps
 

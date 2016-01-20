@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
   resources :proposals, only: [:new, :create] do
     member do
+      post 'attend'
+    end
+  end
+
+  resources :requests, only: [:new, :create] do
+    member do
       post 'vote'
     end
   end

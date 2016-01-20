@@ -12,9 +12,9 @@ class ProposalsController < ApplicationController
     end
   end
 
-  def vote
+  def attend
     @proposal = Proposal.find(params[:id])
-    @proposal.votes.find_or_create_by(user_id: current_user.id)
+    @proposal.attendances.find_or_create_by(user_id: current_user.id)
     redirect_to overview_path
   end
 
