@@ -7,7 +7,7 @@ class User
   ROLE_ADMIN = 'admin'.freeze
 
   field :email, type: String
-  field :role, type: String
+  field :role, type: String, default: ROLE_STUDENT
 
   validates_presence_of :email, :role
   validates_inclusion_of :role, in: [ROLE_STUDENT, ROLE_STAFF, ROLE_ADMIN]

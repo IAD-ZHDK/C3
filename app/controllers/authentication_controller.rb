@@ -1,6 +1,6 @@
 class AuthenticationController < ApplicationController
   def authenticate
-    user = User.find_or_create_by!(email: params[:email], role: 'student')
+    user = User.find_or_create_by!(email: params[:email])
     session[:user_id] = user.id
     redirect_to overview_path
   end
