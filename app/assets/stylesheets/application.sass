@@ -7,6 +7,7 @@ $color: red
 body
   font-family: 'Droid Sans', sans-serif
   font-size: 16px
+  padding: 50px
   a
     color: $color
     text-decoration: none
@@ -20,44 +21,44 @@ body
 .nav
   list-style: none
   padding: 0
-  margin: 0
-  margin-top: 50px
+  margin: 50px 0
   li
     display: inline-block
-    margin-right: 10px
+    margin-right: 20px
     text-decoration: none
 
-.item
-  background-color: #eee
-  padding: 20px
-  margin: 5px 0
-  border-radius: 3px
-  overflow: hidden
-  .left
-    width: 70%
-    float: left
-  .right
-    width: 30%
-    float: right
-    text-align: right
-  .title
-    display: inline-block
-    font-size: 18px
-  .action
-    display: inline-block
-    background-color: $color
-    color: white
-    text-decoration: none
-    font-size: 14px
-    padding: 2px 6px
+.list
+  .clinic
+    background-color: #eee
+    padding: 20px
+    margin: 5px 0
     border-radius: 3px
-    margin: 0 10px
-    &:hover
-      background-color: darken($color, 10%)
-  .score
-    display: inline-block
-    font-weight: bold
-    font-size: 18px
+    overflow: hidden
+    .left
+      width: 70%
+      float: left
+    .right
+      width: 30%
+      float: right
+      text-align: right
+    .title
+      display: inline-block
+      font-size: 18px
+    .action
+      display: inline-block
+      background-color: $color
+      color: white
+      text-decoration: none
+      font-size: 14px
+      padding: 2px 6px
+      border-radius: 3px
+      margin: 0 10px
+      &:hover
+        background-color: darken($color, 10%)
+    .score
+      display: inline-block
+      font-weight: bold
+      font-size: 18px
 
 form
   ul
@@ -66,7 +67,7 @@ form
     padding: 0 !important
     li
       margin-bottom: 10px
-      input[type="text"], input[type="email"], input[type="password"]
+      input[type="text"], input[type="email"], input[type="password"], textarea
         display: block
         font-size: 18px
         min-width: 500px

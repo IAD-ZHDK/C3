@@ -1,0 +1,12 @@
+.clinic
+  .left
+    .title = link_to clinic.title, clinic_path(clinic)
+  .right
+    - if clinic.attendable?
+      - if logged_in? && current_user.attendable?(clinic)
+        = link_to 'Attend', attend_clinic_path(clinic), method: :post, class: 'action'
+      .score = "#{clinic.attendances.count} Attendees"
+    - if clinic.votable?
+      - if logged_in? && current_user.votable?(clinic)
+        = link_to 'Vote', vote_clinic_path(clinic), method: :post, class: 'action'
+      .score = "#{clinic.votes.count} Votes"

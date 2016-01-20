@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
-  root to: 'overview#index', as: :overview
+  root to: 'clinics#index'
 
   get 'login', to: 'authentication#login'
   post 'authenticate', to: 'authentication#authenticate'
   post 'logout', to: 'authentication#logout'
 
-  resources :proposals, only: [:new, :create] do
-    member do
-      post 'attend'
-    end
-  end
+  get 'request', to: 'request#new'
+  post 'request', to: 'request#create'
 
-  resources :requests, only: [:new, :create] do
+  get 'propose', to: 'propose#new'
+  post 'propose', to: 'propose#create'
+
+  get 'schedule', to: 'schedule#new'
+  post 'schedule', to: 'schedule#create'
+
+  resources :clinics, only: [:show] do
     member do
       post 'vote'
+      post 'attend'
     end
   end
 end

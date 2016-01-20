@@ -1,0 +1,5 @@
+= semantic_form_for clinic, url: path do |f|
+  ul
+    = f.input :title, hint: 'Short title for the clinic eg. "Introduction to Mobile App Development".'
+    = f.input :description, as: :text, hint: 'Longer description about the clinic\'s content and implementation.', input_html: { rows: 7 }
+    = f.action :submit, label: 'Make Request'

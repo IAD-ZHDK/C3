@@ -9,10 +9,10 @@ html
   body
     .page
       ul.nav
-        li = link_to 'Overview', overview_path
+        li = link_to 'Overview', root_path
         - if logged_in?
-          li = link_to 'Create Request', new_request_path
-          li = link_to 'Create Proposal', new_proposal_path
+          li = link_to 'Request a Clinic', request_path
+          li = link_to 'Propose a Clinic', propose_path
           li = link_to 'Logout', logout_path, method: :post
         - else
           li = link_to 'Login', login_path
