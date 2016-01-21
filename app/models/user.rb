@@ -25,4 +25,12 @@ class User
   def attendable?(clinic)
     attendances.where(clinic_id: clinic.id).empty?
   end
+
+  def vote!(clinic)
+    votes.find_or_create_by!(clinic_id: clinic.id)
+  end
+
+  def attend!(clinic)
+    attendances.find_or_create_by!(clinic_id: clinic.id)
+  end
 end

@@ -10,6 +10,7 @@ class ProposeController < ApplicationController
     @clinic.proposer = current_user
     @clinic.proposed_at = Time.now
     if @clinic.save
+      current_user.vote!(@clinic)
       redirect_to clinic_path(@clinic)
     else
       render 'new'

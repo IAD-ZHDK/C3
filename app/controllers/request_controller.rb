@@ -10,6 +10,7 @@ class RequestController < ApplicationController
     @clinic.requester = current_user
     @clinic.requested_at = Time.now
     if @clinic.save
+      current_user.vote!(@clinic)
       redirect_to clinic_path(@clinic)
     else
       render 'new'

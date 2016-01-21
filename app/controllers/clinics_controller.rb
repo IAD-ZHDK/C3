@@ -1,4 +1,6 @@
 class ClinicsController < ApplicationController
+  before_action :authenticate_user!, only: [:vote, :propose, :attend]
+
   def index
     @requested = Clinic.requested
     @proposed = Clinic.proposed
@@ -9,12 +11,6 @@ class ClinicsController < ApplicationController
     @clinic = Clinic.find(params[:id])
   end
 
-  def vote
-    @clinic = Clinic.find(params[:id])
-    @clinic.votes.find_or_create_by!(user_id: current_user.id)
-    redirect_to root_path
-  end
-
   def propose
     @clinic = Clinic.find(params[:id])
     @clinic.proposer = current_user
@@ -23,9 +19,13 @@ class ClinicsController < ApplicationController
     redirect_to clinic_path(@clinic)
   end
 
+  def vote
+    current_user.vote!(Clinic.find(params[:id]))
+    redirect_to root_path
+  end
+
   def attend
-    @clinic = Clinic.find(params[:id])
-    @clinic.attendances.find_or_create_by!(user_id: current_user.id)
+    current_user.attend!(Clinic.find(params[:id]))
     redirect_to root_path
   end
 end
