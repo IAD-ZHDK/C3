@@ -10,10 +10,8 @@
 //= require_self
 
 $(function(){
-  $('input[type="datetime-local"]').each(function(){
-    $(this).datetimepicker({
-      inline: true
-    });
+  $('.datetimepicker').each(function(){
+    $(this).datetimepicker();
   });
 
   $('.timeline').each(function(){

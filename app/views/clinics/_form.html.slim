@@ -5,5 +5,5 @@
     - if phase == :propose || phase == :adopt
       = f.input :required_votes
     - if phase == :schedule
-      = f.input :appointment, as: :datetime_picker
+      = f.input :appointment, input_html: { class: :datetimepicker }
     = f.action :submit, label: "#{phase.capitalize} Clinic"

@@ -1,6 +1,9 @@
 .clinic
   .left
-    .title = link_to clinic.title, clinic_path(clinic)
+    .title
+      = link_to clinic.title, clinic_path(clinic)
+      - if clinic.scheduled?
+        .appointment = "- #{l(clinic.appointment, format: :long)}"
   .right
     - if admin?
       = link_to 'Delete', clinic_path(clinic), method: :delete, class: 'action'
