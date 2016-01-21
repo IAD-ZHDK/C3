@@ -2,13 +2,12 @@ class ProposeController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @clinic = Clinic.new
+    @clinic = prepare
   end
 
   def create
-    @clinic = Clinic.new(permitted_params[:clinic])
-    @clinic.proposer = current_user
-    @clinic.proposed_at = Time.now
+    @clinic = prepare
+    @clinic.assign_attributes(permitted_params[:clinic])
     if @clinic.save
       current_user.vote!(@clinic)
       redirect_to clinic_path(@clinic)
@@ -19,7 +18,14 @@ class ProposeController < ApplicationController
 
   protected
 
+  def prepare
+    @clinic = Clinic.new
+    @clinic.proposer = current_user
+    @clinic.proposed_at = Time.now
+    @clinic
+  end
+
   def permitted_params
-    params.permit(clinic: [:title, :description])
+    params.permit(clinic: [:title, :description, :required_votes])
   end
 end

@@ -4,61 +4,59 @@ class Clinic
 
   field :title, type: String
   field :description, type: String
+  validates_presence_of :title, :description
 
   belongs_to :requester, class_name: 'User', inverse_of: :requested_clinics
   field :requested_at, type: Time
+  validates_presence_of :requester, if: :requested_at
 
   belongs_to :proposer, class_name: 'User', inverse_of: :proposed_clinics
   field :proposed_at, type: Time
   field :required_votes, type: Integer, default: 10
+  validates_presence_of :proposer, if: :proposed_at
 
   field :appointment, type: Time
   field :scheduled_at, type: Time
+  validates_presence_of :appointment, if: :scheduled_at
 
   has_many :votes
   has_many :attendances
 
-  validates_presence_of :title, :description
-  validates_presence_of :requested_at, if: :requester
-  validates_presence_of :proposed_at, if: :proposer
-  validates_presence_of :required_votes, if: :proposer
-  validates_presence_of :scheduled_at, if: :appointment
-
   scope :requested, -> { where(
-    :requester.exists => true,
-    :proposer.exists => false,
-    :appointment.exists => false
+    :requested_at.exists => true,
+    :proposed_at.exists => false,
+    :scheduled_at.exists => false
   ) }
 
   scope :proposed, -> { where(
-    :proposer.exists => true,
-    :appointment.exists => false
+    :proposed_at.exists => true,
+    :scheduled_at.exists => false
   ) }
 
   scope :scheduled, -> { where(
-    :appointment.exists => true,
-    :scheduled_at.gte => Time.now
+    :scheduled_at.exists => true,
+    :appointment.gte => Time.now
   ) }
 
   scope :conducted, -> { where(
-    :appointment.exists => true,
-    :scheduled_at.lt => Time.now
+    :scheduled_at.exists => true,
+    :appointment.lt => Time.now
   ) }
 
   def requested?
-    requester.present? && proposer.blank? && appointment.blank?
+    requested_at.present? && proposed_at.blank? && scheduled_at.blank?
   end
 
   def proposed?
-    proposer.present? && appointment.blank?
+    proposed_at.present? && scheduled_at.blank?
   end
 
   def scheduled?
-    appointment.present? && scheduled_at >= Time.now
+    scheduled_at.present? && appointment >= Time.now
   end
 
   def conducted?
-    appointment.present? && scheduled_at < Time.now
+    scheduled_at.present? && appointment < Time.now
   end
 
   def attendable?
