@@ -1,4 +1,4 @@
-# C3
+# CreativeCodingClinic
 
 ## Environment
 
