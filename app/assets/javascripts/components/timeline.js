@@ -113,7 +113,8 @@ Timeline.prototype.render = function() {
 
   var force = new labella.Force({
     minPos: -10,
-    maxPos: innerWidth
+    maxPos: innerWidth,
+    nodeSpacing: 10
   });
 
   force.nodes(nodes)
