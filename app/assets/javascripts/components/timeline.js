@@ -79,7 +79,7 @@ Timeline.prototype.render = function() {
         new Tooltip({
           target: this,
           content: d.data.name,
-          position: 'top left'
+          position: 'top center'
         });
       });
 
