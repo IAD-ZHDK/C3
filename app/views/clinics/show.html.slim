@@ -16,9 +16,10 @@
 h2 Comments
 
 .comments
-  - @clinic.comments.each do |comment|
+  - @comments.each do |comment|
     .comment
-      .text = comment.text
+      .text: strong = comment.text
+      .author = "#{time_ago_in_words(comment.created_at)} ago by #{comment.user.name}"
 
 h2 Add Comment
 

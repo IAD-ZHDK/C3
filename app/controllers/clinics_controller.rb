@@ -9,6 +9,7 @@ class ClinicsController < ApplicationController
 
   def show
     @clinic = fetch
+    @comments = @clinic.comments.order_by(created_at: :desc)
     @comment = Comment.new
   end
 
