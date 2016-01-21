@@ -13,7 +13,7 @@ class ScheduleController < ApplicationController
       current_user.attend!(@clinic)
       redirect_to clinic_path(@clinic)
     else
-      render 'new'
+      render 'edit'
     end
   end
 
