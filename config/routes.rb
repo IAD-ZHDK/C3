@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'propose', to: 'propose#new'
   post 'propose', to: 'propose#create'
 
+  get 'schedule', to: 'schedule#new'
+  post 'schedule', to: 'schedule#create'
+
   resources :clinics, only: [:show] do
     member do
       post 'vote'

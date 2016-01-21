@@ -4,4 +4,6 @@
     = f.input :description, as: :text, hint: 'Longer description about the clinic\'s content and implementation.', input_html: { rows: 7 }
     - if phase == :propose
       = f.input :required_votes
+    - if phase == :schedule
+      = f.input :appointment, as: :datetime_picker
     = f.action :submit, label: "#{phase.capitalize} Clinic"
