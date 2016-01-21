@@ -11,11 +11,11 @@ Rails.application.routes.draw do
   get 'propose', to: 'propose#new'
   post 'propose', to: 'propose#create'
 
-  get 'schedule', to: 'schedule#new'
-  post 'schedule', to: 'schedule#create'
-
   get 'adopt/:id', to: 'adopt#edit', as: :adopt
   patch 'adopt/:id', to: 'adopt#update'
+
+  get 'schedule/:id', to: 'schedule#edit', as: :schedule
+  patch 'schedule/:id', to: 'schedule#update'
 
   resources :clinics, only: [:show] do
     member do

@@ -11,6 +11,8 @@
     - if clinic.votable?
       - if clinic.requested?
         = link_to 'Adopt', adopt_path(clinic), class: 'action'
+      - if clinic.proposed? && clinic.proposer == current_user
+        = link_to 'Schedule', schedule_path(clinic), class: 'action'
       - if logged_in? && current_user.votable?(clinic)
         = link_to 'Vote', vote_clinic_path(clinic), method: :post, class: 'action'
       - if clinic.proposed?
