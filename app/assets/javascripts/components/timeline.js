@@ -15,9 +15,18 @@ var Timeline = function(element) {
 
 Timeline.prototype.render = function() {
   var options =   {
-    margin: { left: 50, right: 50, top: 50, bottom: 50 },
+    margin: { left: 50, right: 50, top: 70, bottom: 50 },
     initialWidth: 1000,
-    initialHeight: 300
+    initialHeight: 200
+  };
+
+  var icons = {
+    requested: "\uf0eb",
+    proposed: "\uf0f2",
+    voted: "\uf004",
+    attended: "\uf00c",
+    scheduled: "\uf017",
+    conducted: "\uf023"
   };
 
   var innerWidth =  options.initialWidth - options.margin.left - options.margin.right;
@@ -50,13 +59,22 @@ Timeline.prototype.render = function() {
   var linkLayer = vis.append('g');
   var labelLayer = vis.append('g');
   var dotLayer = vis.append('g');
+  var iconLayer = vis.append('g');
 
-  dotLayer.selectAll('circle.dot')
+  dotLayer.selectAll('.dot')
     .data(nodes)
     .enter().append('circle')
     .classed('dot', true)
     .attr('r', 3)
     .attr('cx', function(d){ return d.getRoot().idealPos; });
+
+  iconLayer.selectAll('.icon')
+    .data(nodes)
+    .enter().append('text')
+    .classed('icon', true)
+    .text(function(d){ return icons[d.data.type]; })
+    .attr('x', function(d){ return d.getRoot().idealPos; })
+    .attr('y', -15);
 
   var renderer = new labella.Renderer({
     layerGap: 60,
