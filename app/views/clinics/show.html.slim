@@ -1,3 +1,19 @@
-h1 = @clinic.title
-
-p = @clinic.description
+.detail
+  h1
+    = @clinic.title
+    - if @clinic.requested?
+      .bade Requested
+    - elsif @clinic.proposed?
+      .bade Proposed
+    - elsif @clinic.scheduled?
+      .bade Scheduled
+    - else
+      .bade Conducted
+  .info
+    - if @clinic.requester
+      p = "Requested by #{@clinic.requester.name} #{time_ago_in_words(@clinic.requested_at)} ago."
+    - if @clinic.proposer
+      p = "Proposed by #{@clinic.proposer.name} #{time_ago_in_words(@clinic.proposed_at)} ago."
+    - if @clinic.appointment
+      p = "Scheduled for #{l(@clinic.appointment)} #{time_ago_in_words(@clinic.scheduled_at)} ago."
+  .description = @clinic.description
