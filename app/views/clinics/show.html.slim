@@ -17,3 +17,5 @@
     - if @clinic.appointment
       p = "Scheduled for #{l(@clinic.appointment)} #{time_ago_in_words(@clinic.scheduled_at)} ago."
   .description = @clinic.description
+
+.timeline data-url=timeline_clinic_path(@clinic, format: :json)

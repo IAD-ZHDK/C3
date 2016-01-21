@@ -12,6 +12,8 @@ gem 'jquery-rails'
 source 'https://rails-assets.org' do
   gem 'rails-assets-normalize-css'
   gem 'rails-assets-datetimepicker'
+  gem 'rails-assets-d3'
+  gem 'rails-assets-labella'
 end
 
 gem 'jbuilder', '~> 2.0'

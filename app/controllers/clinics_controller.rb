@@ -11,6 +11,10 @@ class ClinicsController < ApplicationController
     @clinic = fetch
   end
 
+  def timeline
+    @timeline = TimelineService.new(fetch)
+  end
+
   def destroy
     redirect_to root_path unless admin?
     fetch.destroy!

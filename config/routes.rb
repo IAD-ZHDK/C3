@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :clinics, only: [:show, :destroy] do
     member do
+      get 'timeline'
       post 'vote'
       post 'attend'
     end
