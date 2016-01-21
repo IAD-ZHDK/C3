@@ -116,9 +116,17 @@ GEM
     rails-assets-d3 (3.5.13)
     rails-assets-datetimepicker (2.4.5)
       rails-assets-jquery (>= 1.7.2)
+    rails-assets-drop (1.4.2)
+      rails-assets-tether (>= 1.1.0, < 2)
     rails-assets-jquery (2.2.0)
     rails-assets-labella (0.1.1)
     rails-assets-normalize-css (3.0.3)
+    rails-assets-tether (1.1.1)
+    rails-assets-tether-drop (1.4.2)
+      rails-assets-tether (>= 1.1.0, < 2)
+    rails-assets-tether-tooltip (1.2.0)
+      rails-assets-tether (>= 1.1.0, < 2)
+      rails-assets-tether-drop (>= 1.4.0, < 2)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -203,8 +211,11 @@ DEPENDENCIES
   rails (= 4.2.5)
   rails-assets-d3!
   rails-assets-datetimepicker!
+  rails-assets-drop!
   rails-assets-labella!
   rails-assets-normalize-css!
+  rails-assets-tether!
+  rails-assets-tether-tooltip!
   sass-rails (~> 5.0)
   sidekiq (~> 4.0.0)
   sidekiq-cron

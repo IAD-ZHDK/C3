@@ -74,7 +74,14 @@ Timeline.prototype.render = function() {
     var sEnter = labelLayer.selectAll('.flag')
       .data(nodes)
       .enter().append('g')
-      .attr('transform', function(d){ return 'translate(' + (d.x - d.width / 2) + ',' + (d.y) + ')'; });
+      .attr('transform', function(d){ return 'translate(' + (d.x - d.width / 2) + ',' + (d.y) + ')'; })
+      .each(function(d) {
+        new Tooltip({
+          target: this,
+          content: d.data.name,
+          position: 'top left'
+        });
+      });
 
     sEnter
       .append('rect')

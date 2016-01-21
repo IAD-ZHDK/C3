@@ -1,6 +1,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require datetimepicker
+//= require tether
+//= require drop
+//= require tether-tooltip
 //= require d3
 //= require labella
 //= require_tree ./components/

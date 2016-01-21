@@ -14,6 +14,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-datetimepicker'
   gem 'rails-assets-d3'
   gem 'rails-assets-labella'
+  gem 'rails-assets-tether'
+  gem 'rails-assets-drop'
+  gem 'rails-assets-tether-tooltip'
 end
 
 gem 'jbuilder', '~> 2.0'
