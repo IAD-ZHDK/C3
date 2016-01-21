@@ -14,10 +14,12 @@ Rails.application.routes.draw do
   get 'schedule', to: 'schedule#new'
   post 'schedule', to: 'schedule#create'
 
+  get 'adopt/:id', to: 'adopt#edit', as: :adopt
+  patch 'adopt/:id', to: 'adopt#update'
+
   resources :clinics, only: [:show] do
     member do
       post 'vote'
-      post 'propose'
       post 'attend'
     end
   end

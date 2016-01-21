@@ -2,7 +2,7 @@
   ul
     = f.input :title, hint: 'Short title for the clinic eg. "Introduction to Mobile App Development".'
     = f.input :description, as: :text, hint: 'Longer description about the clinic\'s content and implementation.', input_html: { rows: 7 }
-    - if phase == :propose
+    - if phase == :propose || phase == :adopt
       = f.input :required_votes
     - if phase == :schedule
       = f.input :appointment, as: :datetime_picker

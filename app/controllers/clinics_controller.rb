@@ -11,14 +11,6 @@ class ClinicsController < ApplicationController
     @clinic = Clinic.find(params[:id])
   end
 
-  def propose
-    @clinic = Clinic.find(params[:id])
-    @clinic.proposer = current_user
-    @clinic.proposed_at = Time.now
-    @clinic.save!
-    redirect_to clinic_path(@clinic)
-  end
-
   def vote
     current_user.vote!(Clinic.find(params[:id]))
     redirect_to root_path

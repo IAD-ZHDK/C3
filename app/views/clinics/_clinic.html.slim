@@ -10,7 +10,7 @@
         .fa.fa-check
     - if clinic.votable?
       - if clinic.requested?
-        = link_to 'Propose', propose_clinic_path(clinic), method: :post, class: 'action'
+        = link_to 'Adopt', adopt_path(clinic), class: 'action'
       - if logged_in? && current_user.votable?(clinic)
         = link_to 'Vote', vote_clinic_path(clinic), method: :post, class: 'action'
       - if clinic.proposed?
