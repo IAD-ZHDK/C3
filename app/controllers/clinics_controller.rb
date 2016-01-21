@@ -8,16 +8,28 @@ class ClinicsController < ApplicationController
   end
 
   def show
-    @clinic = Clinic.find(params[:id])
+    @clinic = fetch
+  end
+
+  def destroy
+    redirect_to root_path unless admin?
+    fetch.destroy!
+    redirect_to root_path
   end
 
   def vote
-    current_user.vote!(Clinic.find(params[:id]))
+    current_user.vote!(fetch)
     redirect_to root_path
   end
 
   def attend
-    current_user.attend!(Clinic.find(params[:id]))
+    current_user.attend!(fetch)
     redirect_to root_path
+  end
+
+  protected
+
+  def fetch
+    Clinic.find(params[:id])
   end
 end

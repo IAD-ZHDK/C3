@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'schedule/:id', to: 'schedule#edit', as: :schedule
   patch 'schedule/:id', to: 'schedule#update'
 
-  resources :clinics, only: [:show] do
+  resources :clinics, only: [:show, :destroy] do
     member do
       post 'vote'
       post 'attend'

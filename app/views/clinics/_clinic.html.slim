@@ -2,6 +2,8 @@
   .left
     .title = link_to clinic.title, clinic_path(clinic)
   .right
+    - if admin?
+      = link_to 'Delete', clinic_path(clinic), method: :delete, class: 'action'
     - if clinic.attendable?
       - if logged_in? && current_user.attendable?(clinic)
         = link_to 'Attend', attend_clinic_path(clinic), method: :post, class: 'action'
