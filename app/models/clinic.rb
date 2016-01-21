@@ -21,6 +21,7 @@ class Clinic
 
   has_many :votes
   has_many :attendances
+  has_many :comments
 
   scope :requested, -> { where(
     :requested_at.exists => true,

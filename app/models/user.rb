@@ -13,6 +13,7 @@ class User
   has_many :proposed_clinics, class_name: 'Clinic', inverse_of: :proposer
   has_many :votes
   has_many :attendances
+  has_many :comments
 
   def admin?
     role == 'admin'

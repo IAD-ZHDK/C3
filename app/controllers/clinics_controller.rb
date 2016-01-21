@@ -9,6 +9,7 @@ class ClinicsController < ApplicationController
 
   def show
     @clinic = fetch
+    @comment = Comment.new
   end
 
   def timeline
@@ -29,6 +30,17 @@ class ClinicsController < ApplicationController
   def attend
     current_user.attend!(fetch)
     redirect_to root_path
+  end
+
+  def comment
+    @clinic = fetch
+    @comment = Comment.new(user: current_user, clinic: @clinic)
+    @comment.text = params[:comment][:text]
+    if @comment.save
+      redirect_to clinic_path(@clinic)
+    else
+      render 'show'
+    end
   end
 
   protected

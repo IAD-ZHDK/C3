@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get 'timeline'
       post 'vote'
       post 'attend'
+      post 'comment'
     end
   end
 end

@@ -12,3 +12,16 @@
   .description = @clinic.description
 
 .timeline data-url=timeline_clinic_path(@clinic, format: :json)
+
+h2 Comments
+
+- @clinic.comments.each do |comment|
+  .comment
+    .text = comment.text
+
+hr
+
+= semantic_form_for @comment, url: comment_clinic_path(@clinic) do |f|
+  ul
+    = f.input :text, as: :text, label: false, input_html: { rows: 3 }
+    = f.action :submit, label: 'Comment'
