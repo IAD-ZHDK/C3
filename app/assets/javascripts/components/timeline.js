@@ -15,9 +15,9 @@ var Timeline = function(element) {
 
 Timeline.prototype.render = function() {
   var options =   {
-    margin: { left: 50, right: 50, top: 70, bottom: 50 },
+    margin: { left: 50, right: 50, top: 50, bottom: 50 },
     initialWidth: 1000,
-    initialHeight: 200
+    initialHeight: 170
   };
 
   var icons = {
@@ -43,14 +43,9 @@ Timeline.prototype.render = function() {
     .range([0, innerWidth])
     .nice();
 
-  var dummyText = vis.append('text').classed('label', true);
-  var nodes = this.data.map(function(event){
-    var bbox = dummyText.text(event.name)[0][0].getBBox();
-    event.h = bbox.height;
-    event.w = bbox.width;
-    return new labella.Node(timeScale(event.time), event.w + 9, event);
+  var nodes = this.data.map(function(d){
+    return new labella.Node(timeScale(d.time), 32, d);
   });
-  dummyText.remove();
 
   vis.append('line')
     .classed('horizon', true)
@@ -59,7 +54,6 @@ Timeline.prototype.render = function() {
   var linkLayer = vis.append('g');
   var labelLayer = vis.append('g');
   var dotLayer = vis.append('g');
-  var iconLayer = vis.append('g');
 
   dotLayer.selectAll('.dot')
     .data(nodes)
@@ -67,14 +61,6 @@ Timeline.prototype.render = function() {
     .classed('dot', true)
     .attr('r', 3)
     .attr('cx', function(d){ return d.getRoot().idealPos; });
-
-  iconLayer.selectAll('.icon')
-    .data(nodes)
-    .enter().append('text')
-    .classed('icon', true)
-    .text(function(d){ return icons[d.data.type]; })
-    .attr('x', function(d){ return d.getRoot().idealPos; })
-    .attr('y', -15);
 
   var renderer = new labella.Renderer({
     layerGap: 60,
@@ -93,16 +79,16 @@ Timeline.prototype.render = function() {
     sEnter
       .append('rect')
       .classed('flag', true)
-      .attr('width', function(d){ return d.data.w + 14; })
-      .attr('height', function(d){ return d.data.h + 7; })
-      .attr('rx', 2)
-      .attr('ry', 2);
+      .attr('width', 32)
+      .attr('height', 32)
+      .attr('rx', 30)
+      .attr('ry', 30);
 
     sEnter.append('text')
       .classed('label', true)
-      .attr('x', 8)
-      .attr('y', 17)
-      .text(function(d){ return d.data.name; });
+      .attr('x', 16)
+      .attr('y', 22)
+      .text(function(d){ return icons[d.data.type]; });
 
     linkLayer.selectAll('.link')
       .data(nodes)
