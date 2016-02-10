@@ -26,7 +26,8 @@ Timeline.prototype.render = function() {
     voted: "\uf004",
     attended: "\uf00c",
     scheduled: "\uf017",
-    conducted: "\uf023"
+    conducted: "\uf023",
+    comment: "\uf27a"
   };
 
   var innerWidth =  options.initialWidth - options.margin.left - options.margin.right;
@@ -78,7 +79,7 @@ Timeline.prototype.render = function() {
       .each(function(d) {
         new Tooltip({
           target: this,
-          content: d.data.name,
+          content: d.data.text,
           position: 'top center'
         });
       });
