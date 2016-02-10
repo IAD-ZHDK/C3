@@ -4,7 +4,7 @@ class AdoptionNotificationJob < ActiveJob::Base
   def perform(clinic)
     ParticipantsService.new(clinic).users.each do |user|
       unless user.id == clinic.proposer_id
-        NotificationMailer.adopt_email(clinic, user).deliver_later!
+        NotificationMailer.adoption_notification(clinic, user).deliver_later!
       end
     end
   end
