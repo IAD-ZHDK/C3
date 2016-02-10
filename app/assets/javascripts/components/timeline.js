@@ -15,9 +15,8 @@ var Timeline = function(element) {
 
 Timeline.prototype.render = function() {
   var options =   {
-    margin: { left: 50, right: 50, top: 50, bottom: 50 },
-    initialWidth: 1000,
-    initialHeight: 170
+    margin: { left: 50, right: 50, top: 50, bottom: 30 },
+    width: 1000,
   };
 
   var icons = {
@@ -30,13 +29,13 @@ Timeline.prototype.render = function() {
     comment: "\uf27a"
   };
 
-  var innerWidth =  options.initialWidth - options.margin.left - options.margin.right;
+  var innerWidth =  options.width - options.margin.left - options.margin.right;
 
-  var vis = d3.select(this.element)
+  var svg = d3.select(this.element)
     .append('svg')
-    .attr('width',  options.initialWidth)
-    .attr('height', options.initialHeight)
-    .append('g')
+    .attr('width',  options.width);
+
+  var vis = svg.append('g')
     .attr('transform', 'translate(' + (options.margin.left) + ',' + (options.margin.top) + ')');
 
   var timeScale = d3.time.scale()
@@ -114,6 +113,7 @@ Timeline.prototype.render = function() {
   force.nodes(nodes)
     .on('end', function(){
       draw(force.nodes());
+      svg.attr('height', options.margin.bottom + options.margin.top + vis[0][0].getBBox().height)
     })
     .start(100);
 };
