@@ -1,7 +1,6 @@
 # Todo
 
-- Mail on request, propose and schedule.
-- Add Newsletter
+- Add Newsletter for new requests and propositions.
 - Add buttons to detail page
 - Content Image 
 - German translation
