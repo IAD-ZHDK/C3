@@ -1,4 +1,4 @@
-class Attendance
+class Confirmation
   include Mongoid::Document
   include Mongoid::Timestamps
   include GlobalID::Identification

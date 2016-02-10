@@ -24,7 +24,7 @@ Timeline.prototype.render = function() {
     requested: "\uf0eb",
     proposed: "\uf0f2",
     voted: "\uf004",
-    attended: "\uf00c",
+    confirmed: "\uf00c",
     scheduled: "\uf017",
     conducted: "\uf023",
     comment: "\uf27a"

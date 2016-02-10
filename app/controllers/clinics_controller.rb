@@ -1,5 +1,5 @@
 class ClinicsController < ApplicationController
-  before_action :authenticate_user!, only: [:vote, :propose, :attend]
+  before_action :authenticate_user!, only: [:vote, :propose, :confirm]
 
   def index
     @requested = Clinic.requested
@@ -28,8 +28,8 @@ class ClinicsController < ApplicationController
     redirect_to root_path
   end
 
-  def attend
-    current_user.attend!(fetch)
+  def confirm
+    current_user.confirm!(fetch)
     redirect_to root_path
   end
 

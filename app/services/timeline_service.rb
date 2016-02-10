@@ -5,7 +5,7 @@ class TimelineService
 
   def fetch
     @votes = @clinic.votes.order_by(created_at: :asc)
-    @attendances = @clinic.attendances.order_by(created_at: :asc)
+    @confirmations = @clinic.confirmations.order_by(created_at: :asc)
     @comments = @clinic.comments.order_by(created_at: :asc)
   end
 
@@ -48,11 +48,11 @@ class TimelineService
       })
     end
 
-    @attendances.each do |attendance|
+    @confirmations.each do |confirmation|
       @events.push({
-        type: 'attended',
-        time: attendance.created_at,
-        name: attendance.user.name,
+        type: 'confirmed',
+        time: confirmation.created_at,
+        name: confirmation.user.name,
         text: "Confirmed by #{@clinic.requester.name}"
       })
     end

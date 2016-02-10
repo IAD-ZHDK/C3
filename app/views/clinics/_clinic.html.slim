@@ -7,11 +7,11 @@
   .right
     - if admin?
       = link_to 'Delete', clinic_path(clinic), method: :delete, class: 'action'
-    - if clinic.attendable?
-      - if logged_in? && current_user.attendable?(clinic)
-        = link_to 'Attend', attend_clinic_path(clinic), method: :post, class: 'action'
+    - if clinic.confirmable?
+      - if logged_in? && current_user.confirmable?(clinic)
+        = link_to 'Confirm', confirm_clinic_path(clinic), method: :post, class: 'action'
       .score
-        = "#{clinic.attendances.count}"
+        = "#{clinic.confirmations.count}"
         .fa.fa-check
     - if clinic.votable?
       - if clinic.requested?

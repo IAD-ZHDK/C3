@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     member do
       get 'timeline'
       post 'vote'
-      post 'attend'
+      post 'confirm'
       post 'comment'
     end
   end

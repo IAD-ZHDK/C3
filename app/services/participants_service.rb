@@ -7,8 +7,8 @@ class ParticipantsService
     @clinic.votes.distinct(:user_id)
   end
 
-  def attendee_ids
-    @clinic.attendances.distinct(:user_id)
+  def confirmee_ids
+    @clinic.confirmations.distinct(:user_id)
   end
 
   def commenter_ids
@@ -16,7 +16,7 @@ class ParticipantsService
   end
 
   def user_ids
-    (voter_ids + attendee_ids + commenter_ids).uniq
+    (voter_ids + confirmee_ids + commenter_ids).uniq
   end
 
   def users

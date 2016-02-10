@@ -21,7 +21,7 @@ class Clinic
   validates_presence_of :appointment, if: :scheduled_at
 
   has_many :votes
-  has_many :attendances
+  has_many :confirmations
   has_many :comments
 
   scope :requested, -> { where(
@@ -61,7 +61,7 @@ class Clinic
     scheduled_at.present? && appointment < Time.now
   end
 
-  def attendable?
+  def confirmable?
     scheduled?
   end
 

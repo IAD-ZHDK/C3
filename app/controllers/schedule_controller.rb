@@ -10,7 +10,7 @@ class ScheduleController < ApplicationController
     @clinic.assign_attributes(permitted_params[:clinic])
     @clinic.scheduled_at = Time.now
     if @clinic.save
-      current_user.attend!(@clinic)
+      current_user.confirm!(@clinic)
       redirect_to clinic_path(@clinic)
     else
       render 'edit'

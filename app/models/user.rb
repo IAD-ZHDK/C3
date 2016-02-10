@@ -13,7 +13,7 @@ class User
   has_many :requested_clinics, class_name: 'Clinic', inverse_of: :requester
   has_many :proposed_clinics, class_name: 'Clinic', inverse_of: :proposer
   has_many :votes
-  has_many :attendances
+  has_many :confirmations
   has_many :comments
 
   def admin?
@@ -24,15 +24,15 @@ class User
     votes.where(clinic_id: clinic.id).empty?
   end
 
-  def attendable?(clinic)
-    attendances.where(clinic_id: clinic.id).empty?
+  def confirmable?(clinic)
+    confirmations.where(clinic_id: clinic.id).empty?
   end
 
   def vote!(clinic)
     votes.find_or_create_by!(clinic_id: clinic.id)
   end
 
-  def attend!(clinic)
-    attendances.find_or_create_by!(clinic_id: clinic.id)
+  def confirm!(clinic)
+    confirmations.find_or_create_by!(clinic_id: clinic.id)
   end
 end
