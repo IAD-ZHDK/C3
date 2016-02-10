@@ -37,7 +37,7 @@ class ClinicsController < ApplicationController
     @comment = Comment.new(user: current_user, clinic: @clinic)
     @comment.text = params[:comment][:text]
     if @comment.save
-      CommentJob.perform_later(@comment)
+      CommentNotificationJob.perform_later(@comment)
       redirect_to clinic_path(@clinic)
     else
       render 'show'

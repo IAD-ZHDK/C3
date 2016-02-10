@@ -2,11 +2,9 @@ Hi <%= @user.name %>!
 
 <%= @comment.user.name %> commented on the clinic "<%= @comment.clinic.title %>":
 
--
 <%= @comment.text %>
--
 
-Follow the following link to see the whole thread:
+Follow the following link to see the whole thread and reply to the comment:
 <%= clinic_url(@comment.clinic) %>
 
 Best,
