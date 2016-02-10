@@ -1,7 +1,7 @@
 development:
   clients:
     default:
-      database: c3_dev
+      database: creative_clinics_dev
       hosts:
         - localhost:27017
 
