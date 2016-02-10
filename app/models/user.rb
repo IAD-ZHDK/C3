@@ -8,6 +8,7 @@ class User
   field :role, type: String, default: 'user'
 
   validates_presence_of :name, :email, :role
+  validates_uniqueness_of :email
   validates_inclusion_of :role, in: %w(user admin)
 
   has_many :requested_clinics, class_name: 'Clinic', inverse_of: :requester
