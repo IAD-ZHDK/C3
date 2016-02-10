@@ -16,7 +16,7 @@ var Timeline = function(element) {
 Timeline.prototype.render = function() {
   var options =   {
     margin: { left: 50, right: 50, top: 50, bottom: 30 },
-    width: 1000,
+    width: 1000
   };
 
   var icons = {
