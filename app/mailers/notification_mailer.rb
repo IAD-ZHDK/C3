@@ -7,4 +7,11 @@ class NotificationMailer < ActionMailer::Base
 
     mail to: @user.email, subject: "New comment by #{@comment.user.name}"
   end
+
+  def schedule_email(clinic, user)
+    @clinic = clinic
+    @user = user
+
+    mail to: @user.email, subject: "#{@clinic.title} has been scheduled"
+  end
 end
