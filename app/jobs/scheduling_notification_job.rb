@@ -1,4 +1,4 @@
-class ScheduleNotificationJob < ActiveJob::Base
+class SchedulingNotificationJob < ActiveJob::Base
   queue_as :default
 
   def perform(clinic)

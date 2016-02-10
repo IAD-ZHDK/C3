@@ -11,7 +11,7 @@ class ScheduleController < ApplicationController
     @clinic.scheduled_at = Time.now
     if @clinic.save
       current_user.confirm!(@clinic)
-      ScheduleNotificationJob.perform_later(@clinic)
+      SchedulingNotificationJob.perform_later(@clinic)
       redirect_to clinic_path(@clinic)
     else
       render 'edit'
