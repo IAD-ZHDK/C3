@@ -5,6 +5,8 @@
 ## Environment
 
 ```
+APP_HOST
+MAIL_SENDER
+REDIS_URL
+PASSWORD_ADMIN
 ```
-
-## Stack

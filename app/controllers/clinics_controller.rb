@@ -38,6 +38,7 @@ class ClinicsController < ApplicationController
     @comment = Comment.new(user: current_user, clinic: @clinic)
     @comment.text = params[:comment][:text]
     if @comment.save
+      CommentWorker.perform_async(@comment.id)
       redirect_to clinic_path(@clinic)
     else
       render 'show'

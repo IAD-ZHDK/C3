@@ -1,6 +1,7 @@
 class Clinic
   include Mongoid::Document
   include Mongoid::Timestamps
+  include GlobalID::Identification
 
   field :title, type: String
   field :description, type: String
