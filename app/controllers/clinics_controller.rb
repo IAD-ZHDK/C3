@@ -18,8 +18,7 @@ class ClinicsController < ApplicationController
   end
 
   def destroy
-    redirect_to root_path unless admin?
-    fetch.destroy!
+    fetch.destroy! if admin?
     redirect_to root_path
   end
 
