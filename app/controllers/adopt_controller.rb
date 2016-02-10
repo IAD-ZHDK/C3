@@ -12,6 +12,7 @@ class AdoptController < ApplicationController
     @clinic.assign_attributes(permitted_params[:clinic])
     if @clinic.save
       current_user.vote!(@clinic)
+      AdoptionNotificationJob.perform_later(@clinic)
       redirect_to clinic_path(@clinic)
     else
       render 'edit'
