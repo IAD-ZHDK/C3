@@ -1,8 +1,7 @@
-class CommentWorker
-  include Sidekiq::Worker
+class CommentJob < ActiveJob::Base
+  queue_as :default
 
-  def perform(comment_id)
-    comment = Comment.find(comment_id)
+  def perform(comment)
     ParticipantsService.new(comment.clinic).users.each do |user|
       unless user.id == comment.user_id
         NotificationMailer.comment_email(comment, user).deliver_later!
