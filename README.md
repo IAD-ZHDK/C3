@@ -1,6 +1,6 @@
 # CreativeClinics
 
-**platform for organizing creative clinics**
+**Platform for organizing creative clinics.**
 
 ## Environment
 
