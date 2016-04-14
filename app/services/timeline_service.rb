@@ -26,7 +26,7 @@ class TimelineService
         type: 'proposed',
         time: @clinic.proposed_at,
         name: @clinic.proposer.name,
-        text: "Proposed by #{@clinic.requester.name}"
+        text: "Proposed by #{@clinic.proposer.name}"
       })
     end
 
@@ -35,7 +35,7 @@ class TimelineService
         type: 'voted',
         time: vote.created_at,
         name: vote.user.name,
-        text: "Voted by #{@clinic.requester.name}"
+        text: "Voted by #{vote.user.name}"
       })
     end
 
@@ -53,7 +53,7 @@ class TimelineService
         type: 'confirmed',
         time: confirmation.created_at,
         name: confirmation.user.name,
-        text: "Confirmed by #{@clinic.requester.name}"
+        text: "Confirmed by #{confirmation.user.name}"
       })
     end
 
@@ -62,7 +62,7 @@ class TimelineService
         type: 'conducted',
         time: @clinic.appointment,
         name: @clinic.proposer.name,
-        text: "Conducted by #{@clinic.requester.name}"
+        text: "Conducted by #{@clinic.proposer.name}"
       })
     end
 
@@ -71,7 +71,7 @@ class TimelineService
         type: 'comment',
         time: comment.created_at,
         name: comment.user.name,
-        text: "Commented by #{@clinic.requester.name}"
+        text: "Commented by #{comment.user.name}"
       })
     end
   end
